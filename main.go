@@ -11,13 +11,6 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-type Task struct {
-	ID        int    `json:"id"`
-	Title     string `json:"title"`
-	Completed bool   `json:"completed"`
-	CreatedAt string `json:"created_at"`
-}
-
 var db *sql.DB
 
 func initDB() {
