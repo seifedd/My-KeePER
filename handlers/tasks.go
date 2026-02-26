@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 	"tasks-api/repos"
@@ -19,7 +20,8 @@ func (h *TaskHandler) List(w http.ResponseWriter, r *http.Request) {
 	tasks, err := h.db.List()
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf("Error fetching tasks: %v", err)
+		http.Error(w, "Failed to fetch tasks", http.StatusInternalServerError)
 		return
 	}
 
@@ -39,7 +41,8 @@ func (h *TaskHandler) Create(w http.ResponseWriter, r *http.Request) {
 
 	id, err := h.db.Create(input.Title, input.Completed)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf("Error creating task: %v", err)
+		http.Error(w, "Failed to create task", http.StatusInternalServerError)
 		return
 	}
 
@@ -57,7 +60,8 @@ func (h *TaskHandler) Delete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := h.db.Delete(id); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf("Error deleting task: %v", err)
+		http.Error(w, "Failed to delete task", http.StatusInternalServerError)
 		return
 	}
 
