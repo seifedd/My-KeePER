@@ -1,0 +1,15 @@
+### Create a new Task
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+
+{
+    "title": "Learn Go",
+    "completed": false
+}
+
+### List all tasks
+GET http://localhost:8080/tasks
+
+### Delete a task (replace 1 with actual ID)
+DELETE http://localhost:8080/tasks/1
