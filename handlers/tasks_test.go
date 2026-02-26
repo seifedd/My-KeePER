@@ -100,11 +100,11 @@ func TestCreate_EmptyBody (t *testing.T) {
 
 // -------------- List Tests --------------
 
-func TestLists_WithTasks(t *testing.T) {
+func TestList_WithTasks(t *testing.T) {
 	db := setupTestDB(t)
 	handler := NewTaskHandler(db) // creates a new TaskHandler instance using the test database
 
-	// Send the database with a couple of tasjs
+	// Send the database with a couple of tasks
 	db.Create("Task A", false)
 	db.Create("Task B", true)
 	
